@@ -15,8 +15,8 @@ ARG DEV=false
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
-    if [ "$DEV" = "true" ]; \
-    then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+    if [ $DEV = "true" ]; \
+        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp && \
     adduser \
@@ -24,8 +24,7 @@ RUN python -m venv /py && \
         --no-create-home \
         django-user
 
-# updates the PATH environment variable
 ENV PATH="/py/bin:$PATH"
-# switches to the django-user
+
 USER django-user
 
