@@ -9,8 +9,9 @@ from django.db.utils import OperationalError
 from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
+  """Django command to wait for database."""
   def handle(self, *args, **options):
-    """ Entry point for command """
+    """Entrypoint for command."""
     self.stdout.write('Waiting for database...')
     db_conn = False
     while db_conn is False:
